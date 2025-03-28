@@ -8,13 +8,7 @@ export class StudentdatabaseController {
     @Post()
       create(
         @Body()
-        body: {
-          
-            name: string,
-            registration_num: string,
-            sem: number,
-            mark: number
-        },
+        body: any
       ) {
         const {  name, registration_num, sem,mark } = body;
         return this.studentDatabseService.create(name, registration_num, sem,mark);
@@ -27,16 +21,16 @@ export class StudentdatabaseController {
 
         @Get(':id')
           findOne(@Param('id') id: number) {
-            return this.studentDatabseService.findOne(+id);
+            return this.studentDatabseService.findOne(id);
           }
 
        @Patch(':id')
         update(
           @Param('id')id:number,
           @Body()
-          body: {name?: string; registration_num?: string; sem?: number; mark?: number},
+          body: {name: string; registration_num?: string; sem?: number; mark?: number},
         ) {
-          return this.studentDatabseService.update(+id, body);
+          return this.studentDatabseService.update(id, body);
         }
         
           @Delete(':id')

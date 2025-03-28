@@ -49,7 +49,7 @@ export class StudentdatabseService {
               ...student,
               ...updateStudentDto,
             });
-            return;
+            return updatedStudent;
           }
           async remove(id: number): Promise<void> {
             await this.studentDatabaseRepository.delete(id);
