@@ -43,6 +43,8 @@ export class StudentdatabseService {
             if (!student) {
               return null;
             }
+            console.log("hyy");
+            
             const updatedStudent = await this.studentDatabaseRepository.save({
               ...student,
               ...updateStudentDto,
