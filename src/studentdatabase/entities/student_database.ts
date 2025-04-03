@@ -9,7 +9,7 @@ import {
 
 @Entity('student_database')
 export class StudentDatabase {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('increment', { type: 'bigint' }) 
   id: number;
 
   @Column({ nullable:false })

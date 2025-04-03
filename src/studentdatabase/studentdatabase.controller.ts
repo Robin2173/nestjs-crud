@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
+import { Body, Controller, DefaultValuePipe, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
 import { StudentdatabseService } from './studentdatabse.service';
 
 @Controller('studentdatabase')
@@ -14,15 +14,15 @@ export class StudentdatabaseController {
         return this.studentDatabseService.create(name, registration_num, sem,mark);
       }
 
-       @Get()
-        findAll() {
-          return this.studentDatabseService.findAll();
-        }
+      
+
 
         @Get(':id')
           findOne(@Param('id') id: number) {
             return this.studentDatabseService.findOne(id);
           }
+
+
 
        @Patch(':id')
         update(
@@ -37,6 +37,11 @@ export class StudentdatabaseController {
           remove(@Param('id') id: number) {
             return this.studentDatabseService.remove(+id);
           }
+
+    @Get('filterBySemesterByQuery')
+      filterBySemesterByQuery(@Query('semester') input: any) {
+        return this.studentDatabseService.filterBySemster(input);
+      }
 }
 
 

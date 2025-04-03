@@ -54,5 +54,11 @@ export class StudentdatabseService {
           async remove(id: number): Promise<void> {
             await this.studentDatabaseRepository.delete(id);
           }
+
+          async filterBySemster(semesterNo:number): Promise<StudentDatabase[]> {
+            return this.studentDatabaseRepository.find({
+              where: { sem: semesterNo },  // WHERE semester = semesterNo
+            });
+          }
       
 }
