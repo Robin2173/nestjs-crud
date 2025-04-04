@@ -2,7 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { StudentDatabase } from './entities/student_database';
 import { Repository } from 'typeorm';
-import { StudentNameBySemDto } from './dto/studentNameBySemDto';
 
 @Injectable()
 export class StudentdatabseService {
@@ -51,13 +50,8 @@ export class StudentdatabseService {
   //   return this.studentDatabaseRepository.find();
   // }
 
-  async findOne(id: number): Promise<StudentNameBySemDto | null> {
-    var record = await this.studentDatabaseRepository.findOne({ where: { id } });
-    let obj:StudentNameBySemDto = new StudentNameBySemDto();
-    obj.name = record.name;
-    obj.sem = record.sem;
-
-    return obj;
+  async findOne(id: number): Promise<StudentDatabase | null> {
+    return this.studentDatabaseRepository.findOne({ where: { id } });
   }
 
   async update(id: number, updateStudentDto: any): Promise<StudentDatabase> {
